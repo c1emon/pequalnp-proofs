@@ -34,11 +34,11 @@ theorem PEqualNP.Outside.R_meta_3326_67
   let a := w.getD (k.val / 15 % 15) 0
   let b := w.getD (k.val % 15) 0
   let z := if k.val<225 then a&&&b else a|||b
-  have admit : seed ∈ seeds := by
+  have seed_mem : seed ∈ seeds := by
     dsimp only [seed]
     rw [List.getD_eq_getElem _ _ (by simpa [seeds] using s.isLt)]
     exact List.getElem_mem _
-  refine ⟨seed,admit,z::p,by simp; omega,?_,last⟩
+  refine ⟨seed,seed_mem,z::p,by simp; omega,?_,last⟩
   intro i
   refine Fin.cases ?_ (fun j => ?_) i
   · exact decode s k hk
